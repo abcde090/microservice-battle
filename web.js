@@ -10,13 +10,13 @@ app.post("/", function (req, res) {
   let x = getX(states);
   let y = getY(states);
   let action;
-  if (y > 6) {
+  if (y > 7) {
     action = moveUp(states);
   } else if (x > 9) {
     action = moveLeft(states);
-  } else if (x < 2) {
+  } else if (x < 1) {
     action = moveRight(states);
-  } else if (y < 2) {
+  } else if (y < 1) {
     action = moveDown(states);
   }
   moves.push(action);
