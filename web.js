@@ -1,14 +1,26 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "10mb" }));
 const URL = "https://nodejs-bot.34.67.217.211.nip.io";
 
 app.post("/", function (req, res) {
   const states = getOwnState(req);
-  const moves = ["F", "T", "L", "R"];
-  res.send("T");
+  const moves = ["T"];
+  let x = getX(states);
+  let y = getY(states);
+  let action;
+  if (x > 9 && y > 9) {
+    action = moveUp(states);
+  } else if (x > 9) {
+    action = moveLeft(states);
+  } else if (x < 3 && y < 3) {
+    action = moveRight(states);
+  } else {
+    action = moveDown(states);
+  }
+  moves.push(action);
+  res.send(moves[Math.floor(Math.random() * moves.length)]);
 });
 
 let getOwnState = (req) => {
@@ -26,6 +38,51 @@ let moveDown = (meState) => {
       return "F";
     case "W":
       return "L";
+    default:
+      return "F";
+  }
+};
+
+let moveUp = (meState) => {
+  switch (meState.direction) {
+    case "N":
+      return "F";
+    case "E":
+      return "L";
+    case "S":
+      return "R";
+    case "W":
+      return "R";
+    default:
+      return "F";
+  }
+};
+
+let moveRight = (meState) => {
+  switch (meState.direction) {
+    case "N":
+      return "R";
+    case "E":
+      return "F";
+    case "S":
+      return "L";
+    case "W":
+      return "R";
+    default:
+      return "F";
+  }
+};
+
+let moveLeft = (meState) => {
+  switch (meState.direction) {
+    case "N":
+      return "L";
+    case "E":
+      return "R";
+    case "S":
+      return "R";
+    case "W":
+      return "F";
     default:
       return "F";
   }
