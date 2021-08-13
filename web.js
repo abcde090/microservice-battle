@@ -6,7 +6,7 @@ const URL = "https://nodejs-bot.34.67.217.211.nip.io";
 
 app.post("/", function (req, res) {
   const states = getOwnState(req);
-  const moves = ["T"];
+  const moves = ["T", "T", "T", "T"];
   let x = getX(states);
   let y = getY(states);
   let action;
