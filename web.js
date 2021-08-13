@@ -5,9 +5,9 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
 app.post("/", function (req, res) {
-  console.log(req.body);
-  const moves = ["F", "T", "L", "R"];
   console.log("test our service");
+  console.log(req.body.state);
+  const moves = ["F", "T", "L", "R"];
   res.send("F");
 });
 
