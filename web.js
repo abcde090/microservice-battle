@@ -6,7 +6,6 @@ const URL = "https://nodejs-bot.34.67.217.211.nip.io";
 
 app.post("/", function (req, res) {
   const states = getOwnState(req);
-  const moves = ["T", "T", "T", "T"];
   let x = getX(states);
   let y = getY(states);
   let action;
@@ -19,7 +18,7 @@ app.post("/", function (req, res) {
   } else if (y < 4) {
     action = moveDown(states);
   }
-  moves.push(action);
+  const moves = ["F", "T", "T", "T", "T", "T", "L", "R"];
   res.send(moves[Math.floor(Math.random() * moves.length)]);
 });
 
