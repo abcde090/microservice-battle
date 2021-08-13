@@ -12,7 +12,7 @@ app.post("/", function (req, res) {
 });
 
 let getOwnState = (req) => {
-  let collections = req.body.arena;
+  let collections = req.body.arena.state;
   return collections[URL];
 };
 
