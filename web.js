@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 app.use(bodyParser.json({ limit: "10mb" }));
-const URL = "https://nodejs-bot.34.67.217.211.nip.io";
+const URL = "https://nodejs-bot.34.67.217.211.nip.io";    //can you please exaplain what is the purpose of this URL and where it is pointing
 
 app.post("/", function (req, res) {
   const states = getOwnState(req);
